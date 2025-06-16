@@ -39,7 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Save to storage if needed
         if (save) {
-            saveToStorage(taskText);
+            const saveToStorage = JSON.parse(localStorage.getItem('tasks') || '[]');
+            saveToStorage.push(taskText);
+            localStorage.setItem('tasks', JSON.stringify(saveToStorage));
         }
 
         // Clear input
